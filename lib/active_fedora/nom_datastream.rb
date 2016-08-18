@@ -54,6 +54,10 @@ module ActiveFedora
       end
     end
 
+    def respond_to_missing?(*args)
+      ng_xml.respond_to?(*args)
+    end
+
     def respond_to?(*args)
       super || self.class.terminology.respond_to?(*args)
     end
