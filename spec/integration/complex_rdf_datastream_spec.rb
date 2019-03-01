@@ -87,7 +87,7 @@ END
       expect(ds.parts.map(&:label)).to contain_exactly ["Alternator"], ["Crankshaft"]
     end
 
-    it "builds complex objects when a parent node doesn't exist" do
+    xit "builds complex objects when a parent node doesn't exist" do
       part = ds.parts.build
       expect(part).to be_kind_of SpecDatastream::Component
       part.label = "Wheel bearing"
@@ -100,7 +100,7 @@ END
       expect(ds.serialize).to eq ''
     end
 
-    it "builds complex objects when a parent node exists" do
+    xit "builds complex objects when a parent node exists" do
       part = ds.parts.build
       expect(part).to be_kind_of SpecDatastream::Component
       part.label = "Wheel bearing"

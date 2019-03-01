@@ -44,22 +44,22 @@ module ActiveFedora
       end
 
       def refresh_attributes
-        changed_attributes.clear
+        clear_attribute_changes(changes.keys)
         @ng_xml = nil
       end
 
       # don't want content eagerly loaded by proxy, so implementing methods that would be implemented by define_attribute_methods
       def ng_xml_will_change!
-        changed_attributes['ng_xml'] = nil
+        attributes_changed_by_setter['ng_xml'] = nil
       end
 
       def ng_xml_doesnt_change!
-        changed_attributes.delete('ng_xml')
+        attributes_changed_by_setter.delete('ng_xml')
       end
 
       # don't want content eagerly loaded by proxy, so implementing methods that would be implemented by define_attribute_methods
       def ng_xml_changed?
-        changed_attributes.key? 'ng_xml'
+        attributes_changed_by_setter.key? 'ng_xml'
       end
 
       def remote_content
@@ -108,7 +108,7 @@ module ActiveFedora
       end
 
       def autocreate?
-        changed_attributes.key? :profile
+        attributes_changed_by_setter.key? :profile
       end
 
       def xml_loaded
