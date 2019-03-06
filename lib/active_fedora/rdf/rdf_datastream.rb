@@ -1,3 +1,5 @@
+require 'tempfile'
+
 module ActiveFedora
   class RDFDatastream < File
     include ActiveTriples::NestedAttributes
