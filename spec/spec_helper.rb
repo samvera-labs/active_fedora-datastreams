@@ -1,3 +1,22 @@
+ENV["environment"] ||= "test"
+
+require "bundler/setup"
+require 'simplecov'
+require 'coveralls'
+
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
+  [
+    SimpleCov::Formatter::HTMLFormatter,
+    Coveralls::SimpleCov::Formatter
+  ]
+)
+
+SimpleCov.start "rails" do
+  add_filter "/spec/"
+end
+
+require 'rspec'
+
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'equivalent-xml/rspec_matchers'
 require 'active_fedora/datastreams'
