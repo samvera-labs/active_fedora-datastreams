@@ -1,0 +1,67 @@
+version: 2.1
+orbs:
+  samvera: samvera/circleci-orb@1
+jobs:
+  bundle_lint_test:
+    parameters:
+      ruby_version:
+        type: string
+      bundler_version:
+        type: string
+        default: 2.0.1
+      rails_version:
+        type: string
+      solr_port:
+        type: string
+        default: '8985'
+    executor:
+      name: 'samvera/ruby_fcrepo_solr'
+      ruby_version: << parameters.ruby_version >>
+      solr_version: 7-slim
+    environment:
+      RAILS_VERSION: << parameters.rails_version >>
+      SOLR_TEST_PORT: << parameters.solr_port >>
+    steps:
+      - samvera/cached_checkout
+      - checkout
+      - run:
+          name: Check for 'master' branch
+          command: |
+              git fetch --all --quiet --prune --prune-tags
+              if [[ -n "$(git branch --all --list master */master)" ]]; then
+                  echo "A branch named 'master' was found. Please remove it."
+                  echo "$(git branch --all --list master */master)"
+              fi
+              [[ -z "$(git branch --all --list master */master)" ]]
+              
+      - samvera/bundle:
+          ruby_version: << parameters.ruby_version >>
+          bundler_version: << parameters.bundler_version >>
+
+      - samvera/install_solr_core
+
+      # Skip rubocop for now
+      #- samvera/rubocop
+
+      - samvera/parallel_rspec
+
+workflows:
+  ci:
+    jobs:
+      - bundle_lint_test:
+          name: ruby2-7_rails5-2
+          ruby_version: 2.7.4
+          rails_version: 5.2.6
+      - bundle_lint_test:
+          name: ruby2-6_rails5-2
+          ruby_version: 2.6.8
+          rails_version: 5.2.6
+      - bundle_lint_test:
+          name: ruby2-5_rails5-2
+          ruby_version: 2.5.9
+          rails_version: 5.2.6
+      - bundle_lint_test:
+          name: ruby2-4_rails5-2
+          ruby_version: 2.4.10
+          rails_version: 5.2.6
+
