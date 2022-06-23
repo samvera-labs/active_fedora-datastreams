@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "active-fedora", ">= 11.0.0.pre", "< 14"
-  spec.add_dependency "activemodel", "< 6.0" # Pin this because there are test failures with rails 6.1
+  spec.add_dependency "activemodel", "< 6.1" # Pin this because there are test failures with rails 6.1
   spec.add_dependency "om", "~> 3.1"
   spec.add_dependency "nom-xml", ">= 0.5.1"
   spec.add_dependency "rdf-rdfxml", '~> 2.0'
