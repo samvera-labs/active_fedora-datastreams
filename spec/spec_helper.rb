@@ -3,6 +3,7 @@ ENV["environment"] ||= "test"
 require "bundler/setup"
 require 'simplecov'
 require 'coveralls'
+require 'byebug'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
   [
