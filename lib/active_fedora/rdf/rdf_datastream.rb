@@ -47,7 +47,7 @@ module ActiveFedora
 
     before_save do
       if content.blank?
-        ActiveFedora::Base.logger.warn "Cowardly refusing to save a datastream with empty content: #{inspect}" if ActiveFedora::Base.logger
+        ActiveFedora::Base.logger&.warn "Cowardly refusing to save a datastream with empty content: #{inspect}"
         if ActiveSupport.respond_to?(:halt_callback_chains_on_return_false)
           # For Rails 5+
           throw :abort
@@ -110,7 +110,7 @@ module ActiveFedora
                                        predicate: config.predicate,
                                        class_name: config.class_name)
                       end
-                      klass.accepts_nested_attributes_for(*nested_attributes_options.keys) unless nested_attributes_options.blank?
+                      klass.accepts_nested_attributes_for(*nested_attributes_options.keys) if nested_attributes_options.present?
                       uri_stub = self.class.rdf_subject.call(self)
 
                       r = klass.new(uri_stub)

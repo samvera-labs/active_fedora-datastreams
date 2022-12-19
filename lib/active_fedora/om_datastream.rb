@@ -59,15 +59,13 @@ module ActiveFedora
     #     </mods:name>
     #   </mods>
     def update_indexed_attributes(params = {}, _opts = {})
-      if self.class.terminology.nil?
-        raise "No terminology is set for this OmDatastream class.  Cannot perform update_indexed_attributes"
-      end
+      raise "No terminology is set for this OmDatastream class.  Cannot perform update_indexed_attributes" if self.class.terminology.nil?
       # remove any fields from params that this datastream doesn't recognize
       # make sure to make a copy of params so not to modify hash that might be passed to other methods
       current_params = params.clone
       current_params.delete_if do |term_pointer, new_values|
         if term_pointer.is_a?(String)
-          ActiveFedora::Base.logger.warn "WARNING: #{self.class.name} ignoring {#{term_pointer.inspect} => #{new_values.inspect}} because #{term_pointer.inspect} is a String (only valid OM Term Pointers will be used).  Make sure your html has the correct field_selector tags in it." if ActiveFedora::Base.logger
+          ActiveFedora::Base.logger&.warn "WARNING: #{self.class.name} ignoring {#{term_pointer.inspect} => #{new_values.inspect}} because #{term_pointer.inspect} is a String (only valid OM Term Pointers will be used).  Make sure your html has the correct field_selector tags in it."
           true
         else
           !self.class.terminology.has_term?(*OM.destringify(term_pointer))

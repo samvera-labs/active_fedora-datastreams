@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Justin Coyne"]
   spec.email         = ["jcoyne@justincoyne.com"]
 
-  spec.summary       = %q{Datastreams for ActiveFedora}
-  spec.description   = %q{XML and RDF datastreams for ActiveFedora}
+  spec.summary       = 'Datastreams for ActiveFedora'
+  spec.description   = 'XML and RDF datastreams for ActiveFedora'
   spec.homepage      = "https://github.com/projecthydra-labs/active_fedora-datastreams"
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = "exe"
@@ -23,14 +23,13 @@ Gem::Specification.new do |spec|
   spec.add_dependency "nom-xml", ">= 0.5.1"
   spec.add_dependency "rdf-rdfxml", '~> 2.0'
   spec.add_dependency "rdf", "~> 3.2"
+  spec.add_development_dependency "bixby"
+  spec.add_development_dependency 'coveralls'
+  spec.add_development_dependency "equivalent-xml"
+  spec.add_development_dependency 'fcrepo_wrapper', '~> 0.9'
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency 'rspec_junit_formatter'
-  spec.add_development_dependency 'coveralls'
   spec.add_development_dependency 'simplecov'
   spec.add_development_dependency "solr_wrapper", "~> 2.1"
-  spec.add_development_dependency 'fcrepo_wrapper', '~> 0.9'
-  spec.add_development_dependency "rubocop", '~> 0.42'
-  spec.add_development_dependency "rubocop-rspec", '~> 1.4'
-  spec.add_development_dependency "equivalent-xml"
 end
