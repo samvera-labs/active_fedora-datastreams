@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "om", "~> 3.1"
   spec.add_dependency "nom-xml", ">= 0.5.1"
   spec.add_dependency "rdf-rdfxml", '~> 2.0'
-  spec.add_dependency "rdf", "< 3.2" # Pin this to avoid a breaking change introduced in 3.2.0
+  spec.add_dependency "rdf", "~> 3.2"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency 'rspec_junit_formatter'
