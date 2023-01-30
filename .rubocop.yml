@@ -1,13 +1,14 @@
+inherit_gem:
+  bixby: bixby_default.yml
+
 AllCops:
-  TargetRubyVersion: 2.2
+  TargetRubyVersion: 2.6
   DisplayCopNames: true
-  Include:
-    - '**/Rakefile'
   Exclude:
     - 'script/**/*'
     - 'vendor/**/*'
 
-Lint/HandleExceptions:
+Lint/SuppressedException:
   Exclude:
     - 'spec/unit/**/*'
     - 'spec/integration/**/*'
@@ -15,7 +16,7 @@ Lint/HandleExceptions:
 Lint/AssignmentInCondition:
   Enabled: false
 
-Metrics/LineLength:
+Layout/LineLength:
   Enabled: false
 
 Metrics/AbcSize:
@@ -38,7 +39,7 @@ Metrics/ClassLength:
 Metrics/MethodLength:
   Enabled: false
 
-Style/PredicateName:
+Naming/PredicateName:
   Exclude:
     - 'lib/active_fedora/om_datastream.rb'
 
@@ -46,11 +47,14 @@ Style/BlockDelimiters:
   Exclude:
     - 'spec/**/*'
 
-Style/BlockEndNewline:
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Layout/BlockEndNewline:
   Exclude:
     - 'spec/**/*'
 
-Style/MultilineBlockLayout:
+Layout/MultilineBlockLayout:
   Exclude:
     - 'spec/**/*'
 
@@ -62,12 +66,12 @@ Style/Lambda:
   Exclude:
     - 'spec/**/*'
     
-Style/FileName:
+Naming/FileName:
   Exclude:
     - 'spec/samples/hydra-mods_article_datastream.rb'
 
-Style/IndentationConsistency:
-  EnforcedStyle: rails
+Layout/IndentationConsistency:
+  EnforcedStyle: indented_internal_methods
 
 Style/CollectionMethods:
   PreferredMethods:
@@ -105,10 +109,7 @@ Style/SignalException:
 Rails:
   Enabled: true
 
-Rails/Date:
-  Enabled: false
-
-Rails/TimeZone:
+Rails/RakeEnvironment:
   Enabled: false
 
 RSpec/AnyInstance:

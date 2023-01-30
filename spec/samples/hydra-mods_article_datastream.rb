@@ -24,7 +24,7 @@ module Hydra
         t.main_title(index_as: [:facetable], path: "title", label: "title")
         t.language(index_as: [:facetable], path: { attribute: "lang" })
       }
-      t.language{
+      t.language {
         t.lang_code(index_as: [:facetable], path: "languageTerm", attributes: { type: "code" })
       }
       t.abstract

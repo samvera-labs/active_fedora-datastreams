@@ -63,7 +63,7 @@ EOF
     it "handles integers" do
       my_datastream.filesize = 12_345
       expect(my_datastream.filesize).to eq [12_345]
-      expect(my_datastream.filesize.first).to be_kind_of Fixnum
+      expect(my_datastream.filesize.first).to be_kind_of Integer
     end
   end
 
