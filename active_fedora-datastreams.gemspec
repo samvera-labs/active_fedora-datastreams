@@ -17,8 +17,8 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "active-fedora", ">= 11.0.0.pre", "< 14"
-  spec.add_dependency "activemodel", "< 6.1" # Pin this because there are test failures with rails 6.1
+  spec.add_dependency "active-fedora", ">= 11.0.0.pre"
+  spec.add_dependency "activemodel", ">= 5.2"
   spec.add_dependency "om", "~> 3.1"
   spec.add_dependency "nom-xml", ">= 0.5.1"
   spec.add_dependency "rdf-rdfxml", '~> 3.2'
@@ -27,10 +27,10 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "byebug"
   spec.add_development_dependency 'coveralls'
   spec.add_development_dependency "equivalent-xml"
-  spec.add_development_dependency 'fcrepo_wrapper', '~> 0.9'
+  spec.add_development_dependency 'fcrepo_wrapper'
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency 'rspec_junit_formatter'
   spec.add_development_dependency 'simplecov'
-  spec.add_development_dependency "solr_wrapper", "~> 2.1"
+  spec.add_development_dependency "solr_wrapper"
 end
