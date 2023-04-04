@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "om", "~> 3.1"
   spec.add_dependency "nom-xml", ">= 0.5.1"
   spec.add_dependency "rdf-rdfxml", '~> 3.2'
+  spec.add_dependency "rdf-rdfa", '= 3.2.0'
   spec.add_dependency "rdf", "~> 3.2"
   spec.add_development_dependency "bixby"
   spec.add_development_dependency "byebug"
