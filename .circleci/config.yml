@@ -30,7 +30,7 @@ jobs:
           FCREPO_PORT: 8080
           FCREPO_REST_PATH: fcrepo/rest
           SOLR_TEST_PORT: << parameters.solr_port >>
-      - image: fcrepo/fcrepo:6.4.0
+      - image: fcrepo/fcrepo:6.5-tomcat9
         environment:
           JAVA_OPTS: -Dfcrepo.autoversioning.enabled=false -Dfcrepo.external.content.allowed=/fcrepo_allow.txt
         command: |
@@ -66,26 +66,38 @@ workflows:
   ci:
     jobs:
       - bundle_lint_test:
+          name: ruby3-3_rails7-2
+          ruby_version: 3.3.5
+          rails_version: 7.2.1.1
+      - bundle_lint_test:
+          name: ruby3-3_rails7-1
+          ruby_version: 3.3.5
+          rails_version: 7.1.4.1
+      - bundle_lint_test:
+          name: ruby3-3_rails7-0
+          ruby_version: 3.3.5
+          rails_version: 7.0.8.5
+      - bundle_lint_test:
+          name: ruby3-2_rails7-2
+          ruby_version: 3.2.5
+          rails_version: 7.2.1.1
+      - bundle_lint_test:
+          name: ruby3-2_rails7-1
+          ruby_version: 3.2.5
+          rails_version: 7.1.4.1
+      - bundle_lint_test:
           name: ruby3-2_rails7-0
-          ruby_version: 3.2.0
-          rails_version: 7.0.4.2
+          ruby_version: 3.2.5
+          rails_version: 7.0.8.5
       - bundle_lint_test:
-          name: ruby3-2_rails6-1
-          ruby_version: 3.2.0
-          rails_version: 6.1.7.2
+          name: ruby3-1_rails7-2
+          ruby_version: 3.1.6
+          rails_version: 7.2.1.1
       - bundle_lint_test:
-          name: ruby3-1_rails6-0
-          ruby_version: 3.1.3
-          rails_version: 6.0.6.1
+          name: ruby3-1_rails7-1
+          ruby_version: 3.1.6
+          rails_version: 7.1.4.1
       - bundle_lint_test:
-          name: ruby3-0_rails6-0
-          ruby_version: 3.0.5
-          rails_version: 6.0.6.1
-      - bundle_lint_test:
-          name: ruby2-7_rails6-0
-          ruby_version: 2.7.7
-          rails_version: 6.0.6.1
-      - bundle_lint_test:
-          name: ruby2-7_rails5-2
-          ruby_version: 2.7.7
-          rails_version: 5.2.8.1
+          name: ruby3-1_rails7-0
+          ruby_version: 3.1.6
+          rails_version: 7.0.8.5
