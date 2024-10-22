@@ -17,8 +17,8 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "active-fedora", ">= 11.0.0.pre"
-  spec.add_dependency "activemodel", ">= 5.2"
+  spec.add_dependency "active-fedora", ">= 15"
+  spec.add_dependency "activemodel", ">= 6.1"
   spec.add_dependency "om", "~> 3.1"
   spec.add_dependency "nom-xml", ">= 0.5.1"
   spec.add_dependency "rdf-rdfxml", '~> 3.2'
